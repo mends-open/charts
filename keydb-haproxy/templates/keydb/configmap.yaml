@@ -1,14 +1,13 @@
-# templates/keydb-configmap.yaml
 {{- range $i, $replicas := .Values.replication.keydb.replicaof }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "keydb.fullname" . }}-config-{{ $i }}
+  name: {{ include "keydb.fullname" $ }}-config-{{ $i }}
 data:
   keydb.conf: |
-    {{ .Values.keydb.config | indent 4 }}
+    {{- $.Values.keydb.config | nindent 4 }}
     {{- range $replica := $replicas }}
-    replicaof {{ printf "%s-%d.%s-headless" (include "keydb.fullname" $) $replica (include "keydb.fullname" $) }} 6379
+    replicaof {{ printf "%s-%d.%s-headless" (include "keydb.fullname" $) (int $replica) (include "keydb.fullname" $) }} 6379
     {{- end }}
 ---
 {{- end }}

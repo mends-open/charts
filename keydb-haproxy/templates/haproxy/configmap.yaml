@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "haproxy.fullname" . }}-config
+data:
+  haproxy.cfg: |
+    {{ .Values.haproxy.config | nindent 4 }}
+    {{- range $i, $server := .Values.replication.haproxy.server }}
+    {{- printf "server %s-%d %s-%d.%s-headless:6379 %s" (include "keydb.fullname" $) (int $i) (include "keydb.fullname" $) (int $i) (include "keydb.fullname" $) $server | nindent 6 }}
+    {{- end }}

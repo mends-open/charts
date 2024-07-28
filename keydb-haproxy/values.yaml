@@ -10,7 +10,6 @@ keydb:
   config: |
     multi-master no
     active-replication yes
-
 haproxy:
   image:
     repository: haproxy
