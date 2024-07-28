@@ -1,8 +1,15 @@
-# templates/_helpers.tpl
 {{- define "keydb.fullname" -}}
 {{- printf "%s-%s" .Release.Name .Chart.Name -}}
 {{- end -}}
 
 {{- define "keydb.name" -}}
-{{- printf "%s-%s" .Release.Name "keydb" -}}
+{{- .Release.Name -}}
+{{- end -}}
+
+{{- define "haproxy.fullname" -}}
+{{- printf "%s-%s" .Release.Name "haproxy" -}}
+{{- end -}}
+
+{{- define "haproxy.name" -}}
+{{- printf "%s-haproxy" .Release.Name -}}
 {{- end -}}
