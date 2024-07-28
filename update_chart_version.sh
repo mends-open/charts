@@ -4,7 +4,6 @@
 
 CHART_PATH=$1
 RELEASE_TYPE=$2
-REPO_PATH=$(dirname "$CHART_PATH")
 
 if [ -z "$CHART_PATH" ] || [ -z "$RELEASE_TYPE" ]; then
   echo "Usage: $0 /path/to/chart release_type"
@@ -79,7 +78,7 @@ echo "Chart packaged."
 
 # Update the Helm repository index
 echo "Updating Helm repository index..."
-helm repo index "$REPO_PATH" --url https://your-repo-url/
+helm repo index .
 echo "Helm repository index updated."
 
 echo "All done!"
