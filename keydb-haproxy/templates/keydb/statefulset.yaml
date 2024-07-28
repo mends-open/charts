@@ -21,7 +21,7 @@ spec:
             - sh
             - -c
             - |
-              exec keydb-server /etc/keydb/$(hostname}.conf
+              exec keydb-server /etc/keydb/{{ include "keydb.fullname" . }}-$(hostname | awk -F'-' '{print $NF}').conf
           volumeMounts:
             {{- range $i := until (.Values.replication.keydb.replicaof | len) }}
             - name: config-{{ $i }}

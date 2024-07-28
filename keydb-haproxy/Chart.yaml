@@ -2,5 +2,5 @@ apiVersion: v2
 name: keydb-haproxy
 description: A Helm chart for deploying KeyDB and HAProxy
 type: application
-version: 0.0.14
+version: 0.0.15
 appVersion: "x86_64_v6.3.4+3.0"
