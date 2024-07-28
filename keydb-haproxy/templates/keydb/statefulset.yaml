@@ -30,12 +30,14 @@ spec:
           affinity:
             {{- toYaml .Values.keydb.affinity | nindent 12 }}
       volumes:
-        - name: config
+        {{- range $i := until (.Values.replication.keydb.replicaof | len) }}
+        - name: config-{{ $i }}
           configMap:
-            name: {{ printf "%s-config-%%s" (include "keydb.fullname" .) }}
+            name: {{ include "keydb.fullname" $ }}-config-{{ $i }}
             items:
               - key: keydb.conf
                 path: keydb.conf
+        {{- end }}
   volumeClaimTemplates:
     - metadata:
         name: data

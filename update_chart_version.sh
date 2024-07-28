@@ -23,6 +23,12 @@ then
   exit 1
 fi
 
+if ! command -v git &> /dev/null
+then
+  echo "Git could not be found, please install Git"
+  exit 1
+fi
+
 echo "Reading current version from $CHART_PATH/Chart.yaml..."
 
 # Extract the current version
@@ -73,12 +79,20 @@ echo "Updated version to $NEW_VERSION in $CHART_PATH/Chart.yaml"
 
 # Package the chart
 echo "Packaging the chart..."
-helm package "$CHART_PATH" --destination "$REPO_PATH"
+helm package "$CHART_PATH" --destination "$CHART_PATH/.."
 echo "Chart packaged."
 
 # Update the Helm repository index
 echo "Updating Helm repository index..."
-helm repo index .
+helm repo index "$CHART_PATH/.."
 echo "Helm repository index updated."
+
+# Commit the changes to git
+echo "Committing changes to git..."
+cd "$CHART_PATH/.."
+git add .
+git commit -m "Bump version to $NEW_VERSION"
+git push
+echo "Changes committed and pushed to git."
 
 echo "All done!"
