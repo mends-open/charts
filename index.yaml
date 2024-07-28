@@ -3,63 +3,73 @@ entries:
   keydb-haproxy:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-07-28T22:06:18.486936143+02:00"
+    created: "2024-07-28T22:15:04.813594607+02:00"
+    description: A Helm chart for deploying KeyDB and HAProxy
+    digest: fc6419330bb92ee761b8a450cd8cbf2957d8948b7ef28599a92aa2956fd63d59
+    name: keydb-haproxy
+    type: application
+    urls:
+    - https://your-repo-url/keydb-haproxy-0.0.5.tgz
+    version: 0.0.5
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-07-28T22:15:04.814433173+02:00"
     description: A Helm chart for deploying KeyDB and HAProxy
     digest: 4495e20470512406ba49048c1f451df7c8b5823f5c976b6a7e6eb062731bcf3c
     name: keydb-haproxy
     type: application
     urls:
-    - keydb-haproxy/keydb-haproxy-0.0.3.tgz
+    - https://your-repo-url/keydb-haproxy/keydb-haproxy-0.0.3.tgz
     version: 0.0.3
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-07-28T22:06:18.486423225+02:00"
+    created: "2024-07-28T22:15:04.812715004+02:00"
     description: A Helm chart for deploying KeyDB and HAProxy
     digest: ec00db61ac74484bf12e0000558cf552499bc067f0b903a53c333f73aad3cb96
     name: keydb-haproxy
     type: application
     urls:
-    - keydb-haproxy-0.0.2.tgz
+    - https://your-repo-url/keydb-haproxy-0.0.2.tgz
     version: 0.0.2
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-07-28T22:06:18.486127533+02:00"
+    created: "2024-07-28T22:15:04.812158204+02:00"
     description: A Helm chart for deploying KeyDB and HAProxy
     digest: 643be3bb2a7188ad250cfb95c653bc15c17c9fbcb58e323f50e099509c32b0ac
     name: keydb-haproxy
     type: application
     urls:
-    - keydb-haproxy-0.0.1.tgz
+    - https://your-repo-url/keydb-haproxy-0.0.1.tgz
     version: 0.0.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-07-28T22:06:18.485825158+02:00"
+    created: "2024-07-28T22:15:04.811833608+02:00"
     description: A Helm chart for deploying KeyDB and HAProxy
     digest: e23db77f85947a133c00abbcd1696c83c4d0e72bd8e52bc5bcb66bfd34bbc80f
     name: keydb-haproxy
     type: application
     urls:
-    - keydb-haproxy-0.0.0.tgz
+    - https://your-repo-url/keydb-haproxy-0.0.0.tgz
     version: 0.0.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-07-28T22:06:18.486639298+02:00"
+    created: "2024-07-28T22:15:04.813958135+02:00"
     description: A Helm chart for deploying KeyDB and HAProxy
     digest: a2643bcfd0edea825e6306101ad5f2750f2e81434ff8a9a1b4975eb2acd69f0b
     name: keydb-haproxy
     type: application
     urls:
-    - keydb-haproxy/keydb-haproxy-0.0.0.tgz
+    - https://your-repo-url/keydb-haproxy/keydb-haproxy-0.0.0.tgz
     version: 0.0.0
   mychart:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-07-28T22:06:18.487134824+02:00"
+    created: "2024-07-28T22:15:04.814738252+02:00"
     description: A Helm chart for deploying KeyDB and HAProxy
     digest: b21290246a0075af50f565ee23199b8416ed37b5bacfed7790492420db6f3e83
     name: mychart
     type: application
     urls:
-    - keydb-haproxy/mychart-0.0.0.tgz
+    - https://your-repo-url/keydb-haproxy/mychart-0.0.0.tgz
     version: 0.0.0
-generated: "2024-07-28T22:06:18.485390516+02:00"
+generated: "2024-07-28T22:15:04.811389709+02:00"

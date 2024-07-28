@@ -4,6 +4,7 @@
 
 CHART_PATH=$1
 RELEASE_TYPE=$2
+REPO_PATH=$(dirname "$CHART_PATH")
 
 if [ -z "$CHART_PATH" ] || [ -z "$RELEASE_TYPE" ]; then
   echo "Usage: $0 /path/to/chart release_type"
@@ -14,6 +15,12 @@ fi
 if ! command -v yq &> /dev/null
 then
   echo "yq could not be found, please install yq"
+  exit 1
+fi
+
+if ! command -v helm &> /dev/null
+then
+  echo "Helm could not be found, please install Helm"
   exit 1
 fi
 
@@ -64,3 +71,15 @@ echo "Updating version in $CHART_PATH/Chart.yaml..."
 yq eval ".version = \"$NEW_VERSION\"" -i "$CHART_PATH/Chart.yaml"
 
 echo "Updated version to $NEW_VERSION in $CHART_PATH/Chart.yaml"
+
+# Package the chart
+echo "Packaging the chart..."
+helm package "$CHART_PATH" --destination "$REPO_PATH"
+echo "Chart packaged."
+
+# Update the Helm repository index
+echo "Updating Helm repository index..."
+helm repo index "$REPO_PATH" --url https://your-repo-url/
+echo "Helm repository index updated."
+
+echo "All done!"
