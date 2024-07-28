@@ -1,7 +1,7 @@
 keydb:
   image:
     repository: eqalpha/keydb
-    tag: 6.0.16
+    tag: "x86_64_v6.3.4"
     pullPolicy: IfNotPresent
   resources: {}
   nodeSelector: {}
@@ -10,10 +10,11 @@ keydb:
   config: |
     multi-master no
     active-replication yes
+
 haproxy:
   image:
     repository: haproxy
-    tag: 2.3.4
+    tag: "3.0"
     pullPolicy: IfNotPresent
   replicaCount: 2
   resources: {}
@@ -44,7 +45,7 @@ haproxy:
       tcp-check send PING\r\n
       tcp-check expect string +PONG
       tcp-check send info replication\r\n
-      tcp-check expect string role: master
+      tcp-check expect string role:master
       tcp-check send QUIT\r\n
       tcp-check expect string +OK
 
