@@ -1,4 +1,3 @@
-# templates/keydb-statefulset.yaml
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -22,14 +21,18 @@ spec:
             - name: config
               mountPath: /etc/keydb/keydb.conf
               subPath: keydb.conf
-          resources: {{ toYaml .Values.keydb.resources | indent 12 }}
-          nodeSelector: {{ toYaml .Values.keydb.nodeSelector | indent 12 }}
-          tolerations: {{ toYaml .Values.keydb.tolerations | indent 12 }}
-          affinity: {{ toYaml .Values.keydb.affinity | indent 12 }}
+          resources:
+            {{- toYaml .Values.keydb.resources | nindent 12 }}
+          nodeSelector:
+            {{- toYaml .Values.keydb.nodeSelector | nindent 12 }}
+          tolerations:
+            {{- toYaml .Values.keydb.tolerations | nindent 12 }}
+          affinity:
+            {{- toYaml .Values.keydb.affinity | nindent 12 }}
       volumes:
         - name: config
           configMap:
-            name: {{ printf "%s-config-$(POD_NAME)" (include "keydb.fullname" .) }}
+            name: {{ printf "%s-config-%%s" (include "keydb.fullname" .) }}
             items:
               - key: keydb.conf
                 path: keydb.conf
