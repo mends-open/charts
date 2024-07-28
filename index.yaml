@@ -3,9 +3,9 @@ entries:
   keydb-haproxy:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-07-28T21:25:02.534103651+02:00"
+    created: "2024-07-28T21:27:32.406212976+02:00"
     description: A Helm chart for deploying KeyDB and HAProxy
-    digest: d6cae5e7dbbb7c1a272f5ced1c9488e6f57c79eba34c208fa1e05402963c28d9
+    digest: ec00db61ac74484bf12e0000558cf552499bc067f0b903a53c333f73aad3cb96
     name: keydb-haproxy
     type: application
     urls:
@@ -13,7 +13,7 @@ entries:
     version: 0.0.2
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-07-28T21:25:02.533812958+02:00"
+    created: "2024-07-28T21:27:32.405879103+02:00"
     description: A Helm chart for deploying KeyDB and HAProxy
     digest: 643be3bb2a7188ad250cfb95c653bc15c17c9fbcb58e323f50e099509c32b0ac
     name: keydb-haproxy
@@ -23,7 +23,7 @@ entries:
     version: 0.0.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-07-28T21:25:02.533492911+02:00"
+    created: "2024-07-28T21:27:32.40551896+02:00"
     description: A Helm chart for deploying KeyDB and HAProxy
     digest: e23db77f85947a133c00abbcd1696c83c4d0e72bd8e52bc5bcb66bfd34bbc80f
     name: keydb-haproxy
@@ -33,7 +33,7 @@ entries:
     version: 0.0.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-07-28T21:25:02.53434423+02:00"
+    created: "2024-07-28T21:27:32.406494121+02:00"
     description: A Helm chart for deploying KeyDB and HAProxy
     digest: a2643bcfd0edea825e6306101ad5f2750f2e81434ff8a9a1b4975eb2acd69f0b
     name: keydb-haproxy
@@ -44,7 +44,7 @@ entries:
   mychart:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-07-28T21:25:02.534543032+02:00"
+    created: "2024-07-28T21:27:32.406729711+02:00"
     description: A Helm chart for deploying KeyDB and HAProxy
     digest: b21290246a0075af50f565ee23199b8416ed37b5bacfed7790492420db6f3e83
     name: mychart
@@ -52,4 +52,4 @@ entries:
     urls:
     - keydb-haproxy/mychart-0.0.0.tgz
     version: 0.0.0
-generated: "2024-07-28T21:25:02.533027391+02:00"
+generated: "2024-07-28T21:27:32.404977389+02:00"
