@@ -17,10 +17,15 @@ spec:
         - name: keydb
           image: "{{ .Values.keydb.image.repository }}:{{ .Values.keydb.image.tag }}"
           imagePullPolicy: {{ .Values.keydb.image.pullPolicy }}
+          command:
+            - sh
+            - -c
+            - |
+              exec keydb-server /etc/keydb/$(hostname}.conf
           volumeMounts:
             {{- range $i := until (.Values.replication.keydb.replicaof | len) }}
             - name: config-{{ $i }}
-              mountPath: /etc/keydb/keydb-{{ $i }}.conf
+              mountPath: /etc/keydb/{{ include "keydb.fullname" $ }}-{{ $i }}.conf
               subPath: keydb.conf
             {{- end }}
           resources:
@@ -35,7 +40,7 @@ spec:
         {{- range $i := until (.Values.replication.keydb.replicaof | len) }}
         - name: config-{{ $i }}
           configMap:
-            name: {{ printf "%s-config-%d" (include "keydb.fullname" $) $i }}
+            name: {{ include "keydb.fullname" $ }}-config-{{ $i }}
             items:
               - key: keydb.conf
                 path: keydb.conf
