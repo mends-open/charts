@@ -1,3 +1,14 @@
 apiVersion: v1
-entries: {}
-generated: "2024-07-28T22:20:00.048141913+02:00"
+entries:
+  keydb-haproxy:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-07-28T22:22:44.266281007+02:00"
+    description: A Helm chart for deploying KeyDB and HAProxy
+    digest: feb8b749ca70bc0643bd5d027bdd47349f3d259b87abbb1cc4eb0da151b9a88a
+    name: keydb-haproxy
+    type: application
+    urls:
+    - keydb-haproxy/keydb-haproxy-0.0.6.tgz
+    version: 0.0.6
+generated: "2024-07-28T22:22:44.265889156+02:00"
