@@ -18,9 +18,11 @@ spec:
           image: "{{ .Values.keydb.image.repository }}:{{ .Values.keydb.image.tag }}"
           imagePullPolicy: {{ .Values.keydb.image.pullPolicy }}
           volumeMounts:
-            - name: config
-              mountPath: /etc/keydb/keydb.conf
+            {{- range $i := until (.Values.replication.keydb.replicaof | len) }}
+            - name: config-{{ $i }}
+              mountPath: /etc/keydb/keydb-{{ $i }}.conf
               subPath: keydb.conf
+            {{- end }}
           resources:
             {{- toYaml .Values.keydb.resources | nindent 12 }}
           nodeSelector:
