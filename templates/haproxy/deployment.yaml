@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "haproxy.fullname" . }}
+spec:
+  replicas: {{ .Values.haproxy.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "haproxy.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "haproxy.name" . }}
+    spec:
+      containers:
+        - name: haproxy
+          image: "{{ .Values.haproxy.image.repository }}:{{ .Values.haproxy.image.tag }}"
+          imagePullPolicy: {{ .Values.haproxy.image.pullPolicy }}
+          volumeMounts:
+            - name: config
+              mountPath: /usr/local/etc/haproxy/haproxy.cfg
+              subPath: haproxy.cfg
+          resources: {{ toYaml .Values.haproxy.resources | indent 12 }}
+          nodeSelector: {{ toYaml .Values.haproxy.nodeSelector | indent 12 }}
+          tolerations: {{ toYaml .Values.haproxy.tolerations | indent 12 }}
+          affinity: {{ toYaml .Values.haproxy.affinity | indent 12 }}
+      volumes:
+        - name: config
+          configMap:
+            name: {{ include "haproxy.fullname" . }}-config
+            items:
+              - key: haproxy.cfg
+                path: haproxy.cfg

@@ -1,0 +1,14 @@
+# templates/headless-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "keydb.fullname" . }}-headless
+  labels:
+    app: {{ include "keydb.name" . }}
+spec:
+  clusterIP: None
+  selector:
+    app: {{ include "keydb.name" . }}
+  ports:
+    - name: redis
+      port: 6379

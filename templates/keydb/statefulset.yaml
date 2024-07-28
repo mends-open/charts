@@ -1,0 +1,43 @@
+# templates/keydb-statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "keydb.fullname" . }}
+spec:
+  serviceName: "{{ include "keydb.fullname" . }}-headless"
+  replicas: {{ .Values.replication.keydb.replicaof | len }}
+  selector:
+    matchLabels:
+      app: {{ include "keydb.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "keydb.name" . }}
+    spec:
+      containers:
+        - name: keydb
+          image: "{{ .Values.keydb.image.repository }}:{{ .Values.keydb.image.tag }}"
+          imagePullPolicy: {{ .Values.keydb.image.pullPolicy }}
+          volumeMounts:
+            - name: config
+              mountPath: /etc/keydb/keydb.conf
+              subPath: keydb.conf
+          resources: {{ toYaml .Values.keydb.resources | indent 12 }}
+          nodeSelector: {{ toYaml .Values.keydb.nodeSelector | indent 12 }}
+          tolerations: {{ toYaml .Values.keydb.tolerations | indent 12 }}
+          affinity: {{ toYaml .Values.keydb.affinity | indent 12 }}
+      volumes:
+        - name: config
+          configMap:
+            name: {{ printf "%s-config-$(POD_NAME)" (include "keydb.fullname" .) }}
+            items:
+              - key: keydb.conf
+                path: keydb.conf
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 10Gi
