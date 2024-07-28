@@ -6,5 +6,5 @@ data:
   haproxy.cfg: |
     {{ .Values.haproxy.config | nindent 4 }}
     {{- range $i, $server := .Values.replication.haproxy.server }}
-    {{- printf "    server %s-%d %s-%d.%s-headless:6379 %s" (include "haproxy.fullname" $) (int $i) (include "haproxy.fullname" $) (int $i) (include "haproxy.fullname" $) $server }}
+    {{- printf "server %s-%d %s-%d.%s-headless:6379 %s" (include "haproxy.fullname" $) (int $i) (include "haproxy.fullname" $) (int $i) (include "haproxy.fullname" $) $server | nindent 6 }}
     {{- end }}
