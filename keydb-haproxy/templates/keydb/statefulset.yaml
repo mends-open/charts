@@ -33,7 +33,7 @@ spec:
         {{- range $i := until (.Values.replication.keydb.replicaof | len) }}
         - name: config-{{ $i }}
           configMap:
-            name: {{ include "keydb.fullname" $ }}-config-{{ $i }}
+            name: {{ printf "%s-config-%d" (include "keydb.fullname" $) $i }}
             items:
               - key: keydb.conf
                 path: keydb.conf

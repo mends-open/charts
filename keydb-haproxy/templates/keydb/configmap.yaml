@@ -7,7 +7,7 @@ data:
   keydb.conf: |
     {{ $.Values.keydb.config | nindent 4 }}
     {{- range $replica := $replicas }}
-    replicaof {{ printf "%s-%d.%s-headless" (include "keydb.fullname" $) $replica (include "keydb.fullname" $) }} 6379
+    replicaof {{ printf "%s-%d.%s-headless" (include "keydb.fullname" $) (int $replica) (include "keydb.fullname" $) }} 6379
     {{- end }}
 ---
 {{- end }}
